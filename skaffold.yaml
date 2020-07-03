@@ -1,6 +1,6 @@
 # use google cloud to build and run
 # !! make sure enable Google Cloud Build in the console
-apiVersion: skaffold/v2alpha3
+apiVersion: skaffold/v2beta5
 kind: Config
 deploy:
   kubectl:

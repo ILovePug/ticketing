@@ -7,4 +7,5 @@ Visit: https://cloud.google.com/sdk/docs/quickstart-macos
 2. make sure `gcloud -v` works in the terminal
 3. login with the gcloud account. `gcloud auth login`
 4. initialize gcloud and connect to the desired project. `gcloud init`
-5. add project context to docker k8s so we can switch context. `gcloud container clusters get-credentials ticketing-dev`
+5. add project context to docker k8s so we can switch context. `gcloud container clusters get-credentials [cluster-name]`
+6. set up default credential for gcloud build to work `gcloud auth application-default login`
