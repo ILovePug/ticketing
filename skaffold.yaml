@@ -1,0 +1,21 @@
+# use google cloud to build and run
+# !! make sure enable Google Cloud Build in the console
+apiVersion: skaffold/v2alpha3
+kind: Config
+deploy:
+  kubectl:
+    manifests:
+      - ./infra/k8s/*
+build:
+  googleCloudBuild: # only needed if we use google cloud build
+    projectId: ticketing-dev-282100
+  artifacts:
+    - image: us.gcr.io/ticketing-dev-282100/auth # gcloud docker registry
+      context: auth # folder containing the code
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts' # watch all files within src folder and end with .ts
+            dest: . # throw all files to the same location in the dest
+            

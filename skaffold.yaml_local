@@ -1,0 +1,20 @@
+# run it with local kubernetes
+apiVersion: skaffold/v2alpha3
+kind: Config
+deploy:
+  kubectl:
+    manifests:
+      - ./infra/k8s/*
+build:
+  local:
+    push: false #do not try to push to docker hub
+  artifacts:
+    - image: qianweng/auth # docker hub image
+      context: auth # folder containing the code
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts' # watch all files within src folder and end with .ts
+            dest: . # throw all files to the same location in the dest
+            
